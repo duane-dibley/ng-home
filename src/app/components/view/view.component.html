@@ -1,0 +1,148 @@
+<tabs-component *ngIf='tabItems.length'
+    [active]="viewKey"
+    [tabItems]="tabItems"
+    [tabChange]="onTabChangeBound"
+>
+</tabs-component>
+<ul *ngIf="viewTypeKey === 'company'" class="view-content">
+    <li>
+        <i class="fa fa-home" title="Registered address"></i>
+        <label *ngIf="viewData[viewKey].address">Registered Address</label>
+        <ul *ngIf="viewData[viewKey].address; else noAddress">
+            <li>{{ viewData[viewKey].address.address_line_1 }}</li>
+            <li>{{ viewData[viewKey].address.address_line_2 }}</li>
+            <li>{{ viewData[viewKey].address.locality }}</li>
+            <li>{{ viewData[viewKey].address.region }}</li>
+            <li>{{ viewData[viewKey].address.postal_code }}</li>
+        </ul>
+        <ng-template #noAddress>
+            No Registered Address
+        </ng-template>
+    </li>
+    <li>
+        <i class="fa fa-legal" title="Charges"></i>
+        <label *ngIf="viewData[viewKey].charges">Charges</label>
+        <ul class="inline" *ngIf="viewData[viewKey].charges; else noCharges">
+            <li>
+                <label>Total: </label>
+                <span>{{ viewData[viewKey].charges.total_count }}</span>
+            </li>
+            <li>
+                <label>Satisfied: </label>
+                <span>{{ viewData[viewKey].charges.satisfied_count }}</span>
+            </li>
+            <li>
+                <label>Part Sat: </label>
+                <span>{{ viewData[viewKey].charges.part_satisfied_count }}</span>
+            </li>
+            <tabs-component *ngIf="viewData[viewKey].charges.items.length"
+                [active]=""
+                [tabItems]="viewData[viewKey].charges.items"
+                [tabChange]=""
+            >
+            </tabs-component>
+        </ul>
+        <ng-template #noCharges>
+            No Charges
+        </ng-template>
+    </li>
+    <li>
+        <i class="fa fa-edge" title="Exceptions"></i>
+        <ul *ngIf="viewData[viewKey].exemptions; else noExceptions">
+            Exceptions
+        </ul>
+        <ng-template #noExceptions>
+            No Exceptions
+        </ng-template>
+    </li>
+    <li>
+        <i class="fa fa-file-o" title="Filing History"></i>
+        <ul *ngIf="viewData[viewKey].filingHistory; else noFiling">
+            <li *ngFor = "let item of viewData[viewKey].filingHistory.items"
+                (click) = "onFilingItemClick(item)"
+            >
+                {{ item.date + ' ' + item.category + ' ' + item.description }}
+            </li>
+        </ul>
+        <ng-template #noFiling>
+            No Filing History
+        </ng-template>
+    </li>
+    <li>
+        <i class="fa fa-info" title="Insolvency History"></i>
+        <ul *ngIf="viewData[viewKey].insolvency; else noInsolvency">
+            Insolvency
+        </ul>
+        <ng-template #noInsolvency>
+            No Insolvency History
+        </ng-template>
+    </li>
+    <li>
+        <i class="fa fa-user" title="Company Officers"></i>
+        <ul *ngIf="viewData[viewKey].officers; else noOfficers">
+            Officers
+        </ul>
+        <ng-template #noOfficers>
+            No Officer Details
+        </ng-template>
+    </li>
+    <li>
+        <i class="fa fa-cog" title="Company Profile"></i>
+        <ul *ngIf="viewData[viewKey].profile; else noProfile">
+            Company Profile
+        </ul>
+        <ng-template #noProfile>
+            No Company Profile
+        </ng-template>
+    </li>
+    <li>
+        <i class="fa fa-registered" title="Registers"></i>
+        <ul *ngIf="viewData[viewKey].registers; else noRegisters">
+            Company Registers
+        </ul>
+        <ng-template #noRegisters>
+            No Company Registers
+        </ng-template>
+    </li>
+    <li>
+        <i class="fa fa-users" title="Persons With Significant Control"></i>
+        <ul *ngIf="viewData[viewKey].sigControl; else noSigControl">
+            Persons With Significant Control
+        </ul>
+        <ng-template #noSigControl>
+            No Persons With Significant Control
+        </ng-template>
+    </li>
+    <li>
+        <i class="fa fa-globe" title="Uk Established Subsiduaries"></i>
+        <ul *ngIf="viewData[viewKey].ukEstablish; else noUk">
+            Uk Established Subsiduaries
+        </ul>
+        <ng-template #noUk>
+            No Uk Established Subsiduaries
+        </ng-template>
+    </li>
+</ul>
+<div *ngIf="viewTypeKey === 'disqualified'">
+    {{ 'Disqualified: ' + viewKey }}
+</div>
+<div *ngIf="viewTypeKey === 'officer'">
+    {{ 'Officer: ' + viewKey }}
+</div>
+<!--  -->
+<!-- <div class="view-component">
+    <div class="view-container">
+        <ul>
+            <li *ngFor="let item of companyOfficers | keyvalue">
+                {{item.key}}:{{item.value}}
+            </li>
+        </ul>
+    </div>
+    <div class="view-container">
+        <ul>
+            <li *ngFor="let item of companyFiling | keyvalue">
+                {{item.key}}:{{item.value}}
+            </li>
+        </ul>
+    </div>
+</div> -->

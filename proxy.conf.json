@@ -1,0 +1,39 @@
+{
+    "/api/*": {
+        "changeOrigin": true,
+        "headers": { "Authorization": "Basic a2tUeFloNE10eUpYRHZGVF9IQmtabmJTNXBQb1dGQzZGYmNiX28tMQ==" },
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/api/": ""
+        },
+        "secure": true,
+        "target": "https://api.companieshouse.gov.uk"
+    },
+    "/doc/*": {
+        "changeOrigin": true,
+        "headers": {
+            "Accept": "application/pdf",
+            "Authorization": "Basic a2tUeFloNE10eUpYRHZGVF9IQmtabmJTNXBQb1dGQzZGYmNiX28tMQ==",
+            "Connection": "close",
+            "Content-Type": "application/pdf",
+            "Host": "document-api.companieshouse.gov.uk",
+            "Origin": "s3-eu-west-1.amazonaws.com"
+        },
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/doc/": ""
+        },
+        "secure": false,
+        "target": "https://document-api.companieshouse.gov.uk"
+    },
+    "/meta/*": {
+        "changeOrigin": true,
+        "headers": { "Authorization": "Basic a2tUeFloNE10eUpYRHZGVF9IQmtabmJTNXBQb1dGQzZGYmNiX28tMQ==" },
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/meta/": ""
+        },
+        "secure": false,
+        "target": "https://frontend-doc-api.companieshouse.gov.uk"
+    }
+}

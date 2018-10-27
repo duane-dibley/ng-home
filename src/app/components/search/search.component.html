@@ -1,0 +1,8 @@
+<div class="search-component">
+    <dynamic-form [config]="config" (changed)="formChanged($event)"></dynamic-form>
+    <ul [ngStyle]="ulStyle">
+        <li *ngFor="let item of searchList;" (click)="listItemClick(item)">
+            {{ item.title + ": " + item.address_snippet }}
+        </li>
+    </ul>
+</div>
