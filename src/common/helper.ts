@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 let timer;
 
-export function debounceFn(delay: number, callback: Function, args: any): void {
+export function debounceFn(delay: number, callback: Function, args: any = null): void {
     clearTimeout(timer);
     timer = setTimeout(done, delay);
 

@@ -17,9 +17,8 @@ export class DynamicFormComponent implements OnInit {
     constructor(private fb: FormBuilder) { }
 
     ngOnInit() {
-        const self = this;
         this.form = this.createGroup();
-        this.form.valueChanges.subscribe(val => { self.changed.emit(val); });
+        this.form.valueChanges.subscribe(formItems => this.changed.emit(formItems));
     }
 
     createGroup() {

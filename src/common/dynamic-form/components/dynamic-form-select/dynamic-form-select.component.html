@@ -2,7 +2,7 @@
     <label>{{ config.label }}</label>
     <select [formControlName]="config.name">
         <option [disabled]="true" [selected]="true" value="">{{ config.placeholder }}</option>
-        <option *ngFor="let option of config.options" value={{option.val}}>
+        <option *ngFor="let option of config.options" value={{option.value}}>
             {{ option.label }}
         </option>
     </select>
