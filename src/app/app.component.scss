@@ -1,7 +1,27 @@
-.app-component {
+:host {
     bottom: 0;
     left: 0;
     position: absolute;
     right: 0;
     top: 0;
+
+    nav {
+        border-bottom: 1px solid rgb(66, 66, 66);
+
+        a {
+            display: inline-block;
+            padding: 3px;
+            text-decoration: none;
+
+            &:hover {
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 2px;
+            }
+
+            &.active {
+                border-bottom: 1px solid rgb(66, 66, 66);
+                padding-bottom: 2px;
+            }
+        }
+    }
 }

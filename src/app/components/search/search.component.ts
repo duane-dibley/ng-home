@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SearchService } from './search.service';
 
 @Component({
-    selector: 'app-component-search',
+    selector: 'search-component',
     styleUrls: ['./search.component.scss'],
     templateUrl: './search.component.html'
 })

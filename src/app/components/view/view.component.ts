@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 // import Model from './model';
 
 @Component({
-    selector: 'app-component-view',
+    selector: 'view-component',
     styleUrls: ['./view.component.scss'],
     templateUrl: './view.component.html'
 })

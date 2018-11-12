@@ -1,13 +1,11 @@
-<div class="search-component">
-    <dynamic-form [config]="searchService.formConfig" 
-        (changed)="searchService.onFormChange($event)"
+<dynamic-form [config]="searchService.formConfig" 
+    (changed)="searchService.onFormChange($event)"
+>
+</dynamic-form>
+<ul [ngStyle]="searchService.listStyle">
+    <li *ngFor="let item of searchService.searchList"
+        (click)="searchService.onItemSelect(item)"
     >
-    </dynamic-form>
-    <ul [ngStyle]="searchService.listStyle">
-        <li *ngFor="let item of searchService.searchList"
-            (click)="searchService.onItemSelect(item)"
-        >
-            {{ item.title + ": " + item.address_snippet }}
-        </li>
-    </ul>
-</div>
+        {{ item.title + ": " + item.address_snippet }}
+    </li>
+</ul>
