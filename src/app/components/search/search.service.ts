@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+// import { Observable } from 'rxjs';
 import { debounceFn } from '../../../common/helper';
 import { HttpClient } from '@angular/common/http';
 
@@ -40,9 +41,10 @@ export class SearchService {
         }
     ];
 
-    listStyle: any = {};
+    listItem: BehaviorSubject<object> = new BehaviorSubject({ links: { self: '' } });
 
-    searchItem: BehaviorSubject<object> = new BehaviorSubject({});
+
+    listStyle: any = {};
 
     searchList: any[] = [];
 
@@ -74,6 +76,6 @@ export class SearchService {
 
     onItemSelect(item) {
         this.listStyle = { 'display': 'none' };
-        this.searchItem.next(item);
+        this.listItem.next(item);
     }
 }

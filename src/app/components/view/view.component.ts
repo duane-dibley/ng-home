@@ -33,7 +33,7 @@ export class ViewComponent implements /* OnChanges, */ OnDestroy, OnInit {
 
     constructor(
         private searchService: SearchService,
-        public viewSerrvice: ViewService
+        public viewService: ViewService
         //
         // private ds: DataService,
         // private gw: Gateway,
@@ -48,11 +48,9 @@ export class ViewComponent implements /* OnChanges, */ OnDestroy, OnInit {
     }
 
     ngOnInit() {
-        this.searchItemSub = this.searchService.searchItem.subscribe(this.onSelectItem);
-    }
-
-    onSelectItem(item) {
-        console.log('onSelectItem', item);
+        // this.searchItemSub = this.searchService.searchItem.subscribe(this.viewService.onSelectListItem);
+        //
+        this.searchItemSub = this.searchService.listItem.subscribe(item => this.viewService.onSelectListItem(item));
     }
 
     // // actions

@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchService } from './components/search/search.service';
 import { ViewComponent } from './components/view/view.component';
 import { ViewService } from './components/view/view.service';
+import { TabsModule } from '../common/tabs/tabs.module';
 
 const appRoutes: Routes = [
     { path: 'api1', component: Api1Component },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
         BrowserModule,
         DynamicFormModule,
         HttpClientModule,
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes),
+        TabsModule
     ],
 
     providers: [
