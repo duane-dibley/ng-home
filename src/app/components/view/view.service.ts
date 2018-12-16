@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { companyModel } from './view.model';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, of } from 'rxjs';
