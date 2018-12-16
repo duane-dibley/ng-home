@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-// import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { debounceFn } from '../../../common/helper';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SearchService {
 
-    constructor(
-        private httpClient: HttpClient
-    ) { }
+    constructor(private httpClient: HttpClient) { }
 
     // props
     formConfig: any[] = [
@@ -40,12 +37,8 @@ export class SearchService {
             type: 'select'
         }
     ];
-
-    listItem: BehaviorSubject<object> = new BehaviorSubject({ links: { self: '' } });
-
-
+    listItem: Subject<any> = new Subject();
     listStyle: any = {};
-
     searchList: any[] = [];
 
     // controller

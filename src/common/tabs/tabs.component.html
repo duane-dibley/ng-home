@@ -1,16 +1,14 @@
-<div>
-    <ul (mouseenter) = "listMouseEnter($event)" 
-        (mouseleave) = "listMouseLeave($event)">
-        <li *ngFor = "let tab of tabItems"
-            (click) = "onTabChange(tab)"
-            (mouseenter) = "itemMouseEnter(tab)" 
-            (mouseleave) = "itemMouseLeave(tab)"
-            [ngClass] = "active === tab.val || active === tab ? 'active' : ''"
-        >
-            <a>
-                {{ tab.label || tab }}
-                <i class='fa fa-remove' [ngStyle]="hoverTab === tab ? { 'display': 'inline' } : ''"></i>
-            </a>
-        </li>
-    </ul>
-</div>
+<ul>
+    <li #item
+        *ngFor = "let tab of tabItems"
+        (click) = "tabChange.emit(tab)"
+        (mouseleave) = "onMouseleave(tab, item.getBoundingClientRect())"
+        (mouseover) = "onMouseover(tab, item.getBoundingClientRect())"
+        [ngClass] = "active === tab.val || active === tab ? 'active' : ''"
+    >
+        <a #anchor>
+            <label>{{ tab.label || tab }}</label>
+        </a>
+        <i class='fa fa-remove'></i>
+    </li>
+</ul>

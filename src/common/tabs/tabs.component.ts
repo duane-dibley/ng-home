@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, ElementRef } from '@angular/core';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
     selector: 'tabs-component',
@@ -7,34 +8,29 @@ import { Component, Input } from '@angular/core';
 })
 
 export class TabsComponent {
-    hoverTab = '';
-
     @Input()
-    active: '';
+    active: String = '';
+
     @Input()
     tabItems: any[] = [];
-    @Input()
-    tabChange: Function;
 
-    itemMouseEnter(tab) {
-        this.hoverTab = tab;
+    @Output()
+    tabChange: EventEmitter<any> = new EventEmitter<any>();
+
+    @ViewChild('anchor')
+    anchor: ElementRef;
+
+    @ViewChild('item')
+    item: ElementRef;
+
+    // used to compact text on hover
+    hoverTab: any = { val: '', style: '' };
+
+    onMouseleave(tab, rect) {
+        this.hoverTab = { val: tab.val, style: '' };
     }
 
-    itemMouseLeave() {
-        this.hoverTab = '';
-    }
-
-    listMouseEnter(evt) {
-        console.log('listMouseEnter', evt);
-    }
-
-    listMouseLeave(evt) {
-        console.log('listMouseLeave', evt);
-    }
-
-    onTabChange(tab) {
-        if (this.tabChange) {
-            this.tabChange(tab);
-        }
+    onMouseover(tab, rect) {
+        this.hoverTab = { val: tab.val, style: { 'width': rect.width - 20 + 'px' } };
     }
 }

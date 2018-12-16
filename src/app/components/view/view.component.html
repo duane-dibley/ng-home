@@ -1,25 +1,37 @@
 <tabs-component *ngIf='viewService.tabItems.length'
     [active]="viewService.viewKey"
     [tabItems]="viewService.tabItems"
-    [tabChange]="onTabChangeBound"
+    (tabChange)="viewService.onTabChange($event)"
 >
 </tabs-component>
-<!-- <ul *ngIf="viewTypeKey === 'company'" class="view-content">
+<ul *ngIf="viewService.viewTypeKey === 'company'" class="view-content">
     <li>
-        <i class="fa fa-home" title="Registered address"></i>
-        <label *ngIf="viewData[viewKey].address">Registered Address</label>
-        <ul *ngIf="viewData[viewKey].address; else noAddress">
-            <li>{{ viewData[viewKey].address.address_line_1 }}</li>
-            <li>{{ viewData[viewKey].address.address_line_2 }}</li>
-            <li>{{ viewData[viewKey].address.locality }}</li>
-            <li>{{ viewData[viewKey].address.region }}</li>
-            <li>{{ viewData[viewKey].address.postal_code }}</li>
+        <div>
+            <i class="fa fa-home" title="Registered address"></i>
+            <label>Registered Address</label>
+        </div>
+        <ul *ngIf="viewService.viewData[viewService.viewKey] && viewService.viewData[viewService.viewKey].address; else noAddress">
+            <li>{{ viewService.viewData[viewService.viewKey].address.address_line_1 }}</li>
         </ul>
         <ng-template #noAddress>
             No Registered Address
         </ng-template>
     </li>
-    <li>
+    <!-- <li>
+        <i class="fa fa-home" title="Registered address"></i>
+        <label *ngIf="viewService.viewData[viewKey].address">Registered Address</label>
+        <ul *ngIf="viewService.viewData[viewKey].address; else noAddress">
+            <li>{{ viewService.viewData[viewKey].address.address_line_1 }}</li>
+            <li>{{ viewService.viewData[viewKey].address.address_line_2 }}</li>
+            <li>{{ viewService.viewData[viewKey].address.locality }}</li>
+            <li>{{ viewService.viewData[viewKey].address.region }}</li>
+            <li>{{ viewService.viewData[viewKey].address.postal_code }}</li>
+        </ul>
+        <ng-template #noAddress>
+            No Registered Address
+        </ng-template>
+    </li> -->
+    <!-- <li>
         <i class="fa fa-legal" title="Charges"></i>
         <label *ngIf="viewData[viewKey].charges">Charges</label>
         <ul class="inline" *ngIf="viewData[viewKey].charges; else noCharges">
@@ -121,9 +133,9 @@
         <ng-template #noUk>
             No Uk Established Subsiduaries
         </ng-template>
-    </li>
+    </li> -->
 </ul>
-<div *ngIf="viewTypeKey === 'disqualified'">
+<!-- <div *ngIf="viewTypeKey === 'disqualified'">
     {{ 'Disqualified: ' + viewKey }}
 </div>
 <div *ngIf="viewTypeKey === 'officer'">

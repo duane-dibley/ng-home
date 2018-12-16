@@ -1,5 +1,5 @@
 <dynamic-form [config]="searchService.formConfig" 
-    (changed)="searchService.onFormChange($event)"
+    (formChange)="searchService.onFormChange($event)"
 >
 </dynamic-form>
 <ul [ngStyle]="searchService.listStyle">

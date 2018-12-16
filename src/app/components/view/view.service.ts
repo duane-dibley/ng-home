@@ -1,21 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
+import { companyModel } from './view.model';
+import { HttpClient } from '@angular/common/http';
+import { forkJoin, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ViewService {
 
-    constructor() { }
+    constructor(private http: HttpClient) { }
 
     tabItems = [];
+    viewData = {};
+    viewTypeKey = '';
     viewKey = '';
 
+    ///// event handlers
     onSelectListItem(searchItem) {
         const { self } = searchItem.links;
 
         if (self) {
             if (self.indexOf('company') > -1) {
+                this.viewTypeKey = 'company';
                 this.tabItems.push({
                     label: searchItem.title.trim(),
-                    params: { item: searchItem, typ: 'company' },
+                    params: { item: searchItem, type: 'company' },
                     val: self
                 });
                 this.setCompany(searchItem);
@@ -23,106 +31,79 @@ export class ViewService {
             }
 
             if (self.indexOf('disqualified') > -1) {
+                this.viewTypeKey = 'disqualified';
                 this.tabItems.push({
                     label: searchItem.title.trim(),
-                    params: { item: searchItem, typ: 'disqualified' },
+                    params: { item: searchItem, type: 'disqualified' },
                     val: self
                 });
                 this.setDisqualified(searchItem);
                 return;
             }
 
+            this.viewTypeKey = 'officer';
             this.tabItems.push({
                 label: searchItem.title.trim(),
-                params: { item: searchItem, typ: 'officer' },
+                params: { item: searchItem, type: 'officer' },
                 val: self
             });
             this.setOfficer(searchItem);
         }
     }
 
-    // helper functions
+    onTabChange(tabItem) {
+        this.viewKey = tabItem.val;
+    }
+
+    ///// data model
     setCompany(item) {
-        // console.log('setCompany', item);
-        //
-        const { self } = item.links;
+        const { self } = item.links,
+            { viewData } = this;
+
         this.viewKey = self;
-        //     { gw, viewData } = this;
 
-        // if (!viewData[self]) {
-        //     Zousan.all([
-        //         gw.fetchLink(self + '/' + Model.address.qStr),
-        //         gw.fetchLink(self + '/' + Model.charges.qStr),
-        //         gw.fetchLink(self + '/' + Model.exemptions.qStr),
-        //         gw.fetchLink(self + '/' + Model.filingHistory.qStr),
-        //         gw.fetchLink(self + '/' + Model.insolvency.qStr),
-        //         gw.fetchLink(self + '/' + Model.officers.qStr),
-        //         gw.fetchLink(self + '/' + Model.profile.qStr),
-        //         gw.fetchLink(self + '/' + Model.registers.qStr),
-        //         gw.fetchLink(self + '/' + Model.sigControl.qStr),
-        //         gw.fetchLink(self + '/' + Model.ukEstablish.qStr)
-        //     ]).then(data => {
-        //         let charges;
+        forkJoin([
+            this.apiHttpLink(self + '/' + companyModel.address.query),
+            this.apiHttpLink(self + '/' + companyModel.charges.query),
+            this.apiHttpLink(self + '/' + companyModel.control.query),
+            this.apiHttpLink(self + '/' + companyModel.establishments.query),
+            this.apiHttpLink(self + '/' + companyModel.exemptions.query),
+            this.apiHttpLink(self + '/' + companyModel.filing.query),
+            this.apiHttpLink(self + '/' + companyModel.insolvency.query),
+            this.apiHttpLink(self + '/' + companyModel.officers.query),
+            this.apiHttpLink(self + '/' + companyModel.profile.query),
+            this.apiHttpLink(self + '/' + companyModel.registers.query)
+        ]).subscribe(
+            result => {
+                Object.assign(viewData, {
+                    [self]: {
+                        address: result[0]
+                    }
+                });
+            },
 
-        //         if (data[1]) {
-        //             charges = Object.assign(data[1], {
-        //                 items: data[1].items.map(item => Object.assign(item, { val: item.charge_number, label: item.created_on }))
-        //             });
-        //         }
-
-        //         Object.assign(this.viewData, {
-        //             [self]: {
-        //                 address: data[0],
-        //                 charges: charges,
-        //                 exemptions: data[2],
-        //                 filingHistory: data[3],
-        //                 insolvency: data[4],
-        //                 officers: data[5],
-        //                 profile: data[6],
-        //                 registers: data[7],
-        //                 sigControl: data[8],
-        //                 ukEstablish: data[9]
-        //             }
-        //         });
-        //     }).finally(() => {
-        //         this.ngZone.run(() => {
-        //             this.viewTypeKey = 'company';
-        //             this.viewKey = self;
-        //         });
-        //     }).catch(console.error);
-        // } else {
-        //     this.viewTypeKey = 'company';
-        //     this.viewKey = self;
-        // }
+            error => {
+                console.log('getCompany-error', error);
+            }
+        );
     }
 
     setDisqualified(item) {
+        // TODO - selcted item is disqualified officer
         console.log('setDisqualified', item);
-        //
-        // const { self } = officer.links;
-        // this.gw.fetchLink(self)
-        //     .then(data => Object.assign(this.viewData, { [self]: Object.assign(officer, { appointments: data }) }))
-        //     .finally(() => {
-        //         this.ngZone.run(() => {
-        //             this.viewTypeKey = 'disqualified';
-        //             this.viewKey = self;
-        //         });
-        //     })
-        //     .catch(console.error);
     }
 
     setOfficer(item) {
+        // TODO - selected item is officer
         console.log('setOfficer', item);
-        //
-        // const { self } = officer.links;
-        // this.gw.fetchLink(self)
-        //     .then(data => Object.assign(this.viewData, { [self]: Object.assign(officer, { appointments: data }) }))
-        //     .finally(() => {
-        //         this.ngZone.run(() => {
-        //             this.viewTypeKey = 'officer';
-        //             this.viewKey = self;
-        //         });
-        //     })
-        //     .catch(console.error);
+    }
+
+    ///// helpers
+    apiError(error) {
+        console.error(error);
+    }
+
+    apiHttpLink(link) {
+        return this.http.get('/api' + link).pipe(catchError(() => of(false)));
     }
 }

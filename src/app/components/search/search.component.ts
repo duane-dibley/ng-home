@@ -8,7 +8,5 @@ import { SearchService } from './search.service';
 })
 
 export class SearchComponent {
-    constructor(
-        public searchService: SearchService
-    ) { }
+    constructor(public searchService: SearchService) { }
 }

@@ -9,16 +9,17 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class DynamicFormComponent implements OnInit {
     @Input()
     config: any[] = [];
-    form: FormGroup;
 
     @Output()
-    changed: EventEmitter<any> = new EventEmitter<any>();
+    formChange: EventEmitter<any> = new EventEmitter<any>();
+
+    form: FormGroup;
 
     constructor(private fb: FormBuilder) { }
 
     ngOnInit() {
         this.form = this.createGroup();
-        this.form.valueChanges.subscribe(formItems => this.changed.emit(formItems));
+        this.form.valueChanges.subscribe(formItems => this.formChange.emit(formItems));
     }
 
     createGroup() {
