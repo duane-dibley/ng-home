@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { debounceFn } from '../../../common/helper';
+import { debounceFn } from '../../../assets/helper';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
@@ -49,7 +49,7 @@ export class SearchService {
                 () => {
                     const link = (formVals.queryString || 'search') + '?q=' + formVals.searchVal.replace(/ /g, '+') + '&items_per_page=100';
 
-                    this.httpClient.get('/api/' + link, {
+                    this.httpClient.get('/companies/' + link, {
                         responseType: 'text',
                     }).subscribe(
                         result => {

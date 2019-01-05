@@ -104,6 +104,6 @@ export class ViewService {
     }
 
     apiHttpLink(link) {
-        return this.http.get('/api' + link).pipe(catchError(() => of(false)));
+        return this.http.get('/companies' + link).pipe(catchError(() => of(false)));
     }
 }

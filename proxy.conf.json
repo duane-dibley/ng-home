@@ -1,10 +1,19 @@
 {
     "/api/*": {
         "changeOrigin": true,
-        "headers": { "Authorization": "Basic a2tUeFloNE10eUpYRHZGVF9IQmtabmJTNXBQb1dGQzZGYmNiX28tMQ==" },
         "logLevel": "debug",
         "pathRewrite": {
             "^/api/": ""
+        },
+        "secure": true,
+        "target": "https://api.iextrading.com/1.0"
+    },
+    "/companies/*": {
+        "changeOrigin": true,
+        "headers": { "Authorization": "Basic a2tUeFloNE10eUpYRHZGVF9IQmtabmJTNXBQb1dGQzZGYmNiX28tMQ==" },
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/companies/": ""
         },
         "secure": true,
         "target": "https://api.companieshouse.gov.uk"

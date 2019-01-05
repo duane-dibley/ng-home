@@ -5,12 +5,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { Api1Component } from './components/api1/api1.component';
 import { CompaniesHouseComponent } from './components/companies-house/companies-house.component';
 import { SearchComponent } from './components/search/search.component';
-import { DynamicFormModule } from '../common/dynamic-form/dynamic-form.module';
+import { DynamicFormModule } from '../assets/dynamic-form/dynamic-form.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchService } from './components/search/search.service';
 import { ViewComponent } from './components/view/view.component';
 import { ViewService } from './components/view/view.service';
-import { TabsModule } from '../common/tabs/tabs.module';
+import { TabsModule } from '../assets/tabs/tabs.module';
+// TODO - needed for API 1.0 form in component
+// should use dynamic form asset and remove
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
     { path: 'api1', component: Api1Component },
@@ -34,6 +37,9 @@ const appRoutes: Routes = [
     imports: [
         BrowserModule,
         DynamicFormModule,
+        // TODO - needed for API 1.0 form in component
+        // should use dynamic form asset and remove
+        FormsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes, { useHash: true }),
         TabsModule
