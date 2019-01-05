@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-stockbroker": {
+    "ng-home": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-stockbroker",
+            "outputPath": "dist/ng-home",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-stockbroker:build"
+            "browserTarget": "ng-home:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-stockbroker:build:production"
+              "browserTarget": "ng-home:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-stockbroker:build"
+            "browserTarget": "ng-home:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "angular-stockbroker-e2e": {
+    "ng-home-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-stockbroker:serve"
+            "devServerTarget": "ng-home:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-stockbroker:serve:production"
+              "devServerTarget": "ng-home:serve:production"
             }
           }
         },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "angular-stockbroker"
+  "defaultProject": "ng-home"
 }

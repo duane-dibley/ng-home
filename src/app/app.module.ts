@@ -13,9 +13,9 @@ import { ViewService } from './components/view/view.service';
 import { TabsModule } from '../common/tabs/tabs.module';
 
 const appRoutes: Routes = [
-    { path: 'api1', component: Api1Component, runGuardsAndResolvers: 'always' },
-    { path: 'companies-house', component: CompaniesHouseComponent, runGuardsAndResolvers: 'always' },
-    { path: '', redirectTo: '/companies-house', pathMatch: 'full', runGuardsAndResolvers: 'always' }
+    { path: 'api1', component: Api1Component },
+    { path: 'companies-house', component: CompaniesHouseComponent },
+    { path: '', redirectTo: '/companies-house', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -35,7 +35,7 @@ const appRoutes: Routes = [
         BrowserModule,
         DynamicFormModule,
         HttpClientModule,
-        RouterModule.forRoot(appRoutes, { onSameUrlNavigation: 'reload' }),
+        RouterModule.forRoot(appRoutes, { useHash: true }),
         TabsModule
     ],
 
