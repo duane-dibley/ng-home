@@ -11,6 +11,7 @@ import { SearchService } from './components/search/search.service';
 import { ViewComponent } from './components/view/view.component';
 import { ViewService } from './components/view/view.service';
 import { TabsModule } from '../assets/tabs/tabs.module';
+import { GridsterModule } from 'angular-gridster2';
 // TODO - needed for API 1.0 form in component
 // should use dynamic form asset and remove
 import { FormsModule } from '@angular/forms';
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
         // TODO - needed for API 1.0 form in component
         // should use dynamic form asset and remove
         FormsModule,
+        GridsterModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes, { useHash: true }),
         TabsModule
