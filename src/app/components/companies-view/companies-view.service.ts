@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { companyModel } from './view.model';
+import { companiesViewModel } from './companies-view.model';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
-export class ViewService {
+export class CompaniesViewService {
 
     constructor(private http: HttpClient) { }
 
@@ -63,16 +63,16 @@ export class ViewService {
         this.viewKey = self;
 
         forkJoin([
-            this.apiHttpLink(self + '/' + companyModel.address.query),
-            this.apiHttpLink(self + '/' + companyModel.charges.query),
-            this.apiHttpLink(self + '/' + companyModel.control.query),
-            this.apiHttpLink(self + '/' + companyModel.establishments.query),
-            this.apiHttpLink(self + '/' + companyModel.exemptions.query),
-            this.apiHttpLink(self + '/' + companyModel.filing.query),
-            this.apiHttpLink(self + '/' + companyModel.insolvency.query),
-            this.apiHttpLink(self + '/' + companyModel.officers.query),
-            this.apiHttpLink(self + '/' + companyModel.profile.query),
-            this.apiHttpLink(self + '/' + companyModel.registers.query)
+            this.apiHttpLink(self + '/' + companiesViewModel.address.query),
+            this.apiHttpLink(self + '/' + companiesViewModel.charges.query),
+            this.apiHttpLink(self + '/' + companiesViewModel.control.query),
+            this.apiHttpLink(self + '/' + companiesViewModel.establishments.query),
+            this.apiHttpLink(self + '/' + companiesViewModel.exemptions.query),
+            this.apiHttpLink(self + '/' + companiesViewModel.filing.query),
+            this.apiHttpLink(self + '/' + companiesViewModel.insolvency.query),
+            this.apiHttpLink(self + '/' + companiesViewModel.officers.query),
+            this.apiHttpLink(self + '/' + companiesViewModel.profile.query),
+            this.apiHttpLink(self + '/' + companiesViewModel.registers.query)
         ]).subscribe(
             result => {
                 Object.assign(viewData, {

@@ -4,7 +4,7 @@ import { debounceFn } from '../../../assets/helper';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class SearchService {
+export class CompaniesSearchService {
 
     constructor(private httpClient: HttpClient) { }
 

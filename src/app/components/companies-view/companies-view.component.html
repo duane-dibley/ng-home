@@ -1,17 +1,17 @@
-<tabs-component *ngIf='viewService.tabItems.length'
-    [active]="viewService.viewKey"
-    [tabItems]="viewService.tabItems"
-    (tabChange)="viewService.onTabChange($event)"
+<tabs-component *ngIf='companiesViewService.tabItems.length'
+    [active]="companiesViewService.viewKey"
+    [tabItems]="companiesViewService.tabItems"
+    (tabChange)="companiesViewService.onTabChange($event)"
 >
 </tabs-component>
-<ul *ngIf="viewService.viewTypeKey === 'company'" class="view-content">
+<ul *ngIf="companiesViewService.viewTypeKey === 'company'" class="view-content">
     <li>
         <div>
             <i class="fa fa-home" title="Registered address"></i>
             <label>Registered Address</label>
         </div>
-        <ul *ngIf="viewService.viewData[viewService.viewKey] && viewService.viewData[viewService.viewKey].address; else noAddress">
-            <li>{{ viewService.viewData[viewService.viewKey].address.address_line_1 }}</li>
+        <ul *ngIf="companiesViewService.viewData[companiesViewService.viewKey] && companiesViewService.viewData[companiesViewService.viewKey].address; else noAddress">
+            <li>{{ companiesViewService.viewData[companiesViewService.viewKey].address.address_line_1 }}</li>
         </ul>
         <ng-template #noAddress>
             No Registered Address
@@ -19,13 +19,13 @@
     </li>
     <!-- <li>
         <i class="fa fa-home" title="Registered address"></i>
-        <label *ngIf="viewService.viewData[viewKey].address">Registered Address</label>
-        <ul *ngIf="viewService.viewData[viewKey].address; else noAddress">
-            <li>{{ viewService.viewData[viewKey].address.address_line_1 }}</li>
-            <li>{{ viewService.viewData[viewKey].address.address_line_2 }}</li>
-            <li>{{ viewService.viewData[viewKey].address.locality }}</li>
-            <li>{{ viewService.viewData[viewKey].address.region }}</li>
-            <li>{{ viewService.viewData[viewKey].address.postal_code }}</li>
+        <label *ngIf="companiesViewService.viewData[viewKey].address">Registered Address</label>
+        <ul *ngIf="companiesViewService.viewData[viewKey].address; else noAddress">
+            <li>{{ companiesViewService.viewData[viewKey].address.address_line_1 }}</li>
+            <li>{{ companiesViewService.viewData[viewKey].address.address_line_2 }}</li>
+            <li>{{ companiesViewService.viewData[viewKey].address.locality }}</li>
+            <li>{{ companiesViewService.viewData[viewKey].address.region }}</li>
+            <li>{{ companiesViewService.viewData[viewKey].address.postal_code }}</li>
         </ul>
         <ng-template #noAddress>
             No Registered Address

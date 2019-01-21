@@ -1,4 +1,4 @@
-export const companyModel = {
+export const companiesViewModel = {
     address: {
         query: 'registered-office-address', // GET /company/{company_number}/registered-office-address
     },
