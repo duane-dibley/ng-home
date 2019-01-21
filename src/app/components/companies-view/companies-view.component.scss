@@ -1,31 +1,31 @@
 ul.view-content {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    > li {
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        display: inline-block;
-        height: 250px;
-        overflow: auto;
-        vertical-align: top;
-        width: 50%;
+  > li {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 250px;
+    overflow: auto;
+    vertical-align: top;
+    width: 50%;
 
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
 
-            &.inline {
-                li {
-                    display: inline-block;
-                    padding: 3px;
-                }
-            }
+      &.inline {
+        li {
+          display: inline-block;
+          padding: 3px;
         }
-
-        .fa {
-            font-size: 18px;
-        }
+      }
     }
+
+    .fa {
+      font-size: 18px;
+    }
+  }
 }

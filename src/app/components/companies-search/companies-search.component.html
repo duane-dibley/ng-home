@@ -1,11 +1,7 @@
-<dynamic-form [config]="companiesSearchService.formConfig" 
-    (formChange)="companiesSearchService.onFormChange($event)"
->
+<dynamic-form [config]="companiesSearchService.formConfig" (formChange)="companiesSearchService.onFormChange($event)">
 </dynamic-form>
 <ul [ngStyle]="companiesSearchService.listStyle">
-    <li *ngFor="let item of companiesSearchService.searchList"
-        (click)="companiesSearchService.onItemSelect(item)"
-    >
-        {{ item.title + ": " + item.address_snippet }}
-    </li>
+  <li *ngFor="let item of companiesSearchService.searchList" (click)="companiesSearchService.onItemSelect(item)">
+    {{ item.title + ": " + item.address_snippet }}
+  </li>
 </ul>

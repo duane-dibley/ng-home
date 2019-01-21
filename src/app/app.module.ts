@@ -17,40 +17,40 @@ import { GridsterModule } from 'angular-gridster2';
 import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
-    { path: 'api1', component: Api1Route },
-    { path: 'companies', component: CompaniesRoute },
-    { path: '', redirectTo: '/companies', pathMatch: 'full' }
+  { path: 'api1', component: Api1Route },
+  { path: 'companies', component: CompaniesRoute },
+  { path: '', redirectTo: '/companies', pathMatch: 'full' }
 ];
 
 @NgModule({
-    bootstrap: [
-        AppComponent
-    ],
+  bootstrap: [
+    AppComponent
+  ],
 
-    declarations: [
-        Api1Route,
-        AppComponent,
-        CompaniesRoute,
-        CompaniesSearchComponent,
-        CompaniesViewComponent
-    ],
+  declarations: [
+    Api1Route,
+    AppComponent,
+    CompaniesRoute,
+    CompaniesSearchComponent,
+    CompaniesViewComponent
+  ],
 
-    imports: [
-        BrowserModule,
-        DynamicFormModule,
-        // TODO - needed for API 1.0 form in component
-        // should use dynamic form asset and remove
-        FormsModule,
-        GridsterModule,
-        HttpClientModule,
-        RouterModule.forRoot(appRoutes, { useHash: true }),
-        TabsModule
-    ],
+  imports: [
+    BrowserModule,
+    DynamicFormModule,
+    // TODO - needed for API 1.0 form in component
+    // should use dynamic form asset and remove
+    FormsModule,
+    GridsterModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes, { useHash: true }),
+    TabsModule
+  ],
 
-    providers: [
-        CompaniesSearchService,
-        CompaniesViewService
-    ]
+  providers: [
+    CompaniesSearchService,
+    CompaniesViewService
+  ]
 })
 
 export class AppModule { }
