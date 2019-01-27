@@ -1,0 +1,4 @@
+<div [formGroup]="group" [ngStyle]="config.fieldStyle">
+  <label>{{ config.label }}</label>
+  <input type="text" [attr.placeholder]="config.placeholder" [formControlName]="config.name" />
+</div>

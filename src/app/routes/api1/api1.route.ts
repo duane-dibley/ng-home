@@ -10,8 +10,8 @@ import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 export class Api1Route {
 
   dashboard: Array<GridsterItem> = [
-    { cols: 1, name: 'filter', rows: 1, y: 0, x: 0 },
-    { cols: 1, name: 'chart', rows: 1, y: 1, x: 0 }
+    { cols: 1, name: 'filter', rows: 1, x: 0, y: 0 },
+    { cols: 3, name: 'chart', rows: 1, x: 1, y: 0 }
   ];
 
   options: GridsterConfig = {};

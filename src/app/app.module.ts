@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatInputModule,  MatSelectModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-// TODO - needed for API 1.0 form in component
-// should use dynamic form asset and remove
-import { FormsModule } from '@angular/forms';
-// libs
 import { GridsterModule } from 'angular-gridster2';
+//
+import { AppComponent } from './app.component';
 // assets
 import { DynamicFormModule } from '../assets/dynamic-form/dynamic-form.module';
 import { TabsModule } from '../assets/tabs/tabs.module';
@@ -47,13 +47,15 @@ const appRoutes: Routes = [
   ],
 
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     DynamicFormModule,
-    // TODO - needed for API 1.0 form in component
-    // should use dynamic form asset and remove
-    FormsModule,
     GridsterModule,
     HttpClientModule,
+    // MatButtonModule,
+    // MatCheckboxModule,
+    MatInputModule,
+    MatSelectModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
     TabsModule
   ],
