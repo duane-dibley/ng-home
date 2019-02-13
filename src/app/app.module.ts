@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule } from '@angular/material';
-import { MatInputModule,  MatSelectModule } from '@angular/material';
+// import { MatInputModule,  MatSelectModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { GridsterModule } from 'angular-gridster2';
@@ -52,10 +51,8 @@ const appRoutes: Routes = [
     DynamicFormModule,
     GridsterModule,
     HttpClientModule,
-    // MatButtonModule,
-    // MatCheckboxModule,
-    MatInputModule,
-    MatSelectModule,
+    // MatInputModule,
+    // MatSelectModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
     TabsModule
   ],

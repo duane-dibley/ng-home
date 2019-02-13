@@ -1,10 +1,4 @@
-<mat-form-field>
-  <mat-label>Sym</mat-label>
-  <input matInput>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Duration</mat-label>
-  <mat-select>
-      <mat-option>5yr</mat-option>
-  </mat-select>
-</mat-form-field>
+<dynamic-form [config]="formConfig" (formChange)="formValues.next($event)"></dynamic-form>
+<!--  -->
+<!-- <label>Sym: </label>
+<input (change)="formValues.next($event)" /> -->

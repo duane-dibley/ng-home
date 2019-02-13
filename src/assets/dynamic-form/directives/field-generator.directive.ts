@@ -3,19 +3,24 @@ import { FormGroup } from '@angular/forms';
 //
 import { BaseInputFieldComponent } from '../components/base-input-field/base-input-field.component';
 import { BaseSelectFieldComponent } from '../components/base-select-field/base-select-field.component';
+import { MaterialInputFieldComponent } from '../components/material-input-field/material-input-field.component';
+import { MaterialSelectFieldComponent } from '../components/material-select-field/material-select-field.component';
 //
 import { Field } from '../models/field.interface';
 
 const components = {
   input: BaseInputFieldComponent,
-  select: BaseSelectFieldComponent
+  select: BaseSelectFieldComponent,
+  //
+  matInput: MaterialInputFieldComponent,
+  matSelect: MaterialSelectFieldComponent
 };
 
 @Directive({
   selector: '[dynamicField]'
 })
 
-export class BaseFieldGeneratorDirective implements OnInit {
+export class FieldGeneratorDirective implements OnInit {
   @Input()
   config;
 
