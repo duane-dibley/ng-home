@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { MatInputModule,  MatSelectModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { GridsterModule } from 'angular-gridster2';
@@ -51,8 +50,6 @@ const appRoutes: Routes = [
     DynamicFormModule,
     GridsterModule,
     HttpClientModule,
-    // MatInputModule,
-    // MatSelectModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
     TabsModule
   ],
