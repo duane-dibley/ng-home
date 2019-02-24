@@ -7,8 +7,8 @@ import { GridsterModule } from 'angular-gridster2';
 //
 import { AppComponent } from './app.component';
 // assets
-import { DynamicFormModule } from '../assets/dynamic-form/dynamic-form.module';
-import { TabsModule } from '../assets/tabs/tabs.module';
+import { DynamicFormModule } from './common/dynamic-form/dynamic-form.module';
+import { TabsModule } from './common/tabs/tabs.module';
 // routes
 import { Api1Route } from './routes/api1/api1.route';
 import { CompaniesRoute } from './routes/companies/companies.route';

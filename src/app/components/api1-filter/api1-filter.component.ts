@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Api1FilterService } from './api1-filter.service';
-import { BehaviorSubject, Subject } from 'rxjs';
 import { forkJoin } from 'rxjs';
 import { Api1Service } from '../../api/api1.service';
 import { ViewData } from './api1-filter.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'api1-filter-component',
