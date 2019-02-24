@@ -5,6 +5,7 @@ import { BaseInputFieldComponent } from '../components/base-input-field/base-inp
 import { BaseSelectFieldComponent } from '../components/base-select-field/base-select-field.component';
 import { MaterialInputFieldComponent } from '../components/material-input-field/material-input-field.component';
 import { MaterialSelectFieldComponent } from '../components/material-select-field/material-select-field.component';
+import { MaterialSubmitFieldComponent } from '../components/material-submit-field/material-submit-field.component';
 //
 import { Field } from '../models/field.interface';
 
@@ -13,7 +14,8 @@ const components = {
   select: BaseSelectFieldComponent,
   //
   matInput: MaterialInputFieldComponent,
-  matSelect: MaterialSelectFieldComponent
+  matSelect: MaterialSelectFieldComponent,
+  matSubmit: MaterialSubmitFieldComponent
 };
 
 @Directive({

@@ -24,6 +24,11 @@ export class Api1FilterComponent implements OnInit {
       name: 'sym',
       placeholder: 'Enter symbol of stock',
       type: 'matInput'
+    },
+    {
+      label: 'Submit',
+      name: 'submit',
+      type: 'matSubmit'
     }
   ];
 
@@ -40,10 +45,12 @@ export class Api1FilterComponent implements OnInit {
     this.formValues.subscribe(formValues => this.setSyms(formValues));
   }
 
-  searchClick() {
+  formSubmit(formVals) {
+    const { sym } = formVals;
+
     forkJoin([
-      this.api1Service.getPath('stock/symbol/chart', { symbol: 'MSFT' }),
-      this.api1Service.getPath('stock/symbol/company', { symbol: 'MSFT' })
+      this.api1Service.getPath('stock/symbol/chart', { symbol: sym }),
+      this.api1Service.getPath('stock/symbol/company', { symbol: sym })
     ]).subscribe(
       result => this.viewData = Object.assign({}, {
         chart: result[0],
@@ -51,7 +58,7 @@ export class Api1FilterComponent implements OnInit {
       }),
 
       error => {
-        console.error('getCompany-error', error);
+        console.error('formSubmit-error', error);
       }
     );
   }

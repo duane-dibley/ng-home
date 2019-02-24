@@ -9,9 +9,10 @@ export class Api1FilterService {
   ) { }
 
   getSyms(formValues) {
+    // fetches all syms
     return this.http.get('/api/' + '/ref-data/symbols')
       .subscribe(result => {
-        console.log();
+        // TODO
       });
   }
 }

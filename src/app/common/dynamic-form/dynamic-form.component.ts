@@ -12,6 +12,8 @@ export class DynamicFormComponent implements OnInit {
 
   @Output()
   formChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
+  formSubmit: EventEmitter<any> = new EventEmitter<any>();
 
   form: FormGroup;
 
@@ -26,5 +28,9 @@ export class DynamicFormComponent implements OnInit {
     const group = this.fb.group({});
     this.config.forEach(control => group.addControl(control.name, this.fb.control(null, null, null)));
     return group;
+  }
+
+  onSubmit() {
+    this.formSubmit.emit(this.form.value);
   }
 }

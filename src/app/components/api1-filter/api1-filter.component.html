@@ -1,2 +1,1 @@
-<dynamic-form [config]="formConfig" (formChange)="formValues.next($event)"></dynamic-form>
-<button (click)="searchClick()">Search</button>
+<dynamic-form [config]="formConfig" (formSubmit)="formSubmit($event)"></dynamic-form>
