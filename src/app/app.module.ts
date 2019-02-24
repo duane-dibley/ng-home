@@ -20,6 +20,7 @@ import { CompaniesViewComponent } from './components/companies-view/companies-vi
 // services
 import { Api1ChartService } from './components/api1-chart/api1-chart.service';
 import { Api1FilterService } from './components/api1-filter/api1-filter.service';
+import { Api1Service } from './api/api1.service';
 import { CompaniesSearchService } from './components/companies-search/companies-search.service';
 import { CompaniesViewService } from './components/companies-view/companies-view.service';
 
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
   providers: [
     Api1ChartService,
     Api1FilterService,
+    Api1Service,
     CompaniesSearchService,
     CompaniesViewService
   ]
