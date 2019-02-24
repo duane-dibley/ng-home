@@ -26,6 +26,23 @@ export class Api1FilterComponent implements OnInit {
       type: 'matInput'
     },
     {
+      label: 'Range',
+      options: [
+        '5yr',
+        '2yr',
+        '1yr',
+        'ytd',
+        '6m',
+        '3m',
+        '1m',
+        '1d',
+        'date',
+        'dynamic'
+      ],
+      name: 'range',
+      type: 'matSelect'
+    },
+    {
       label: 'Submit',
       name: 'submit',
       type: 'matSubmit'

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
 //
 import { DynamicFormComponent } from './dynamic-form.component';
 import { BaseInputFieldComponent } from './components/base-input-field/base-input-field.component';
@@ -36,6 +37,7 @@ import { FieldGeneratorDirective } from './directives/field-generator.directive'
   imports: [
     CommonModule,
     MatButtonModule,
+    MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule
